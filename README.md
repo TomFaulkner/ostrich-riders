@@ -24,21 +24,21 @@ omarchy plugin add https://github.com/TomFaulkner/ostrich-riders.git --enable
 From this checkout:
 
 ```sh
-ln -sfn "$PWD" ~/.config/omarchy/plugins/TomFaulkner.ostrich-riders
-omarchy plugin validate ~/.config/omarchy/plugins/TomFaulkner.ostrich-riders
-omarchy plugin enable TomFaulkner.ostrich-riders --section right
+ln -sfn "$PWD" ~/.config/omarchy/plugins/io.github.tomfaulkner.ostrich-riders
+omarchy plugin validate ~/.config/omarchy/plugins/io.github.tomfaulkner.ostrich-riders
+omarchy plugin enable io.github.tomfaulkner.ostrich-riders --section right
 ```
 
 Then click the horse in the bar, or:
 
 ```sh
-omarchy-shell shell toggle TomFaulkner.ostrich-riders
+omarchy-shell shell toggle io.github.tomfaulkner.ostrich-riders
 ```
 
 A keybind, if you want one, in `~/.config/hypr/bindings.lua`:
 
 ```lua
-o.bind("SUPER + CTRL + J", "Ostrich Riders", "omarchy-shell shell toggle TomFaulkner.ostrich-riders")
+o.bind("SUPER + CTRL + J", "Ostrich Riders", "omarchy-shell shell toggle io.github.tomfaulkner.ostrich-riders")
 ```
 
 ## Controls
@@ -52,8 +52,8 @@ o.bind("SUPER + CTRL + J", "Ostrich Riders", "omarchy-shell shell toggle TomFaul
 ## Remove
 
 ```sh
-omarchy plugin disable TomFaulkner.ostrich-riders
-omarchy plugin remove TomFaulkner.ostrich-riders --yes
+omarchy plugin disable io.github.tomfaulkner.ostrich-riders
+omarchy plugin remove io.github.tomfaulkner.ostrich-riders --yes
 ```
 
 High scores live in

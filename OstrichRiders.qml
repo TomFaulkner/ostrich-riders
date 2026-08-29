@@ -23,7 +23,7 @@ Item {
   property bool leftHeld: false
   property bool rightHeld: false
 
-  readonly property string pluginId: "TomFaulkner.ostrich-riders"
+  readonly property string pluginId: "io.github.tomfaulkner.ostrich-riders"
   readonly property string homeDir: Quickshell.env("HOME")
   readonly property string stateHome: Quickshell.env("XDG_STATE_HOME") || (homeDir + "/.local/state")
   readonly property string stateDir: stateHome + "/ostrich-riders"
