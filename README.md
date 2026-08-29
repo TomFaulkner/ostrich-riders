@@ -18,28 +18,27 @@ Omarchy theme you are on. Platforms and lava are drawn the same way.
 From this checkout:
 
 ```sh
-ln -sfn "$PWD" ~/.config/omarchy/plugins/tom.ostrich-riders
-omarchy plugin validate ~/.config/omarchy/plugins/tom.ostrich-riders
-omarchy plugin enable tom.ostrich-riders --yes
-omarchy bar move tom.ostrich-riders --section right
+omarchy plugin add https://github.com/TomFaulkner/ostrich-riders.git --enable
 ```
 
-Or, once the repo is on GitHub:
+From this checkout:
 
 ```sh
-omarchy plugin add <repo-url> --enable
+ln -sfn "$PWD" ~/.config/omarchy/plugins/TomFaulkner.ostrich-riders
+omarchy plugin validate ~/.config/omarchy/plugins/TomFaulkner.ostrich-riders
+omarchy plugin enable TomFaulkner.ostrich-riders --section right
 ```
 
 Then click the horse in the bar, or:
 
 ```sh
-omarchy-shell shell toggle tom.ostrich-riders
+omarchy-shell shell toggle TomFaulkner.ostrich-riders
 ```
 
 A keybind, if you want one, in `~/.config/hypr/bindings.lua`:
 
 ```lua
-o.bind("SUPER + CTRL + J", "Ostrich Riders", "omarchy-shell shell toggle tom.ostrich-riders")
+o.bind("SUPER + CTRL + J", "Ostrich Riders", "omarchy-shell shell toggle TomFaulkner.ostrich-riders")
 ```
 
 ## Controls
@@ -53,8 +52,8 @@ o.bind("SUPER + CTRL + J", "Ostrich Riders", "omarchy-shell shell toggle tom.ost
 ## Remove
 
 ```sh
-omarchy plugin disable tom.ostrich-riders
-omarchy plugin remove tom.ostrich-riders --yes
+omarchy plugin disable TomFaulkner.ostrich-riders
+omarchy plugin remove TomFaulkner.ostrich-riders --yes
 ```
 
 High scores live in
