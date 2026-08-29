@@ -8,14 +8,14 @@ the bar icon (or bind a key) to open a fullscreen overlay. Stay above
 your opponent, collect the eggs before they hatch, and do not fall in
 the lava.
 
+![Ostrich Riders](preview.png)
+
 Sprites and sounds come from [Ostrich Riders](https://github.com/dulsi/ostrichriders)
 (GPL-3.0-or-later). They are stored as grayscale sheets and colorized at
 runtime from the shell's `Color` singleton, so the riders follow whatever
 Omarchy theme you are on. Platforms and lava are drawn the same way.
 
 ## Install
-
-From this checkout:
 
 ```sh
 omarchy plugin add https://github.com/TomFaulkner/ostrich-riders.git --enable
