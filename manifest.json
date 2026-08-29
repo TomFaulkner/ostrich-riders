@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "tom.ostrich-riders",
+  "name": "Ostrich Riders",
+  "version": "1.0.0",
+  "author": "Tom",
+  "license": "GPL-3.0-or-later",
+  "description": "A theme-aware Joust-like overlay for omarchy-shell, based on Ostrich Riders. Flap, stay above your opponent, collect the eggs.",
+  "kinds": ["bar-widget", "overlay"],
+  "keepLoaded": true,
+  "entryPoints": {
+    "barWidget": "BarWidget.qml",
+    "overlay": "OstrichRiders.qml"
+  },
+  "barWidget": {
+    "displayName": "Ostrich Riders",
+    "description": "Play Ostrich Riders in an overlay",
+    "category": "Fun",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}
