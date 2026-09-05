@@ -17,6 +17,7 @@ Item {
   property var game: Game.initialState()
   property int bestScore: 0
   property bool muted: false
+  property bool transparent: false
   property bool preferencesLoaded: false
   property double lastTick: 0
   property bool flapHeld: false
@@ -107,6 +108,12 @@ Item {
     playfield.requestPaint()
   }
 
+  function toggleTransparency() {
+    transparent = !transparent
+    scheduleSave()
+    playfield.requestPaint()
+  }
+
   function tick() {
     if (!opened || game.phase !== "playing") return
     var now = Date.now()
@@ -151,11 +158,12 @@ Item {
     var parsed = Game.parsePreferences(raw)
     bestScore = parsed.bestScore
     muted = parsed.muted
+    transparent = parsed.transparent
     preferencesLoaded = true
   }
 
   function savePreferences() {
-    preferencesFile.setText(Game.serializePreferences(bestScore, muted))
+    preferencesFile.setText(Game.serializePreferences(bestScore, muted, transparent))
   }
 
   Process {
@@ -225,7 +233,7 @@ Item {
 
     Rectangle {
       anchors.fill: parent
-      color: Qt.rgba(0, 0, 0, 0.72)
+      color: Qt.rgba(0, 0, 0, root.transparent ? 0.22 : 0.72)
     }
 
     MouseArea {
@@ -242,7 +250,7 @@ Item {
 
       Rectangle {
         anchors.fill: parent
-        color: root.sky
+        color: root.transparent ? Qt.rgba(root.sky.r, root.sky.g, root.sky.b, 0.55) : root.sky
         border.color: Qt.rgba(root.ink.r, root.ink.g, root.ink.b, 0.55)
         border.width: 2
         radius: 4
@@ -270,8 +278,10 @@ Item {
           var ctx = getContext("2d")
           ctx.reset()
           ctx.imageSmoothingEnabled = false
-          ctx.fillStyle = root.sky
-          ctx.fillRect(0, 0, width, height)
+          if (!root.transparent) {
+            ctx.fillStyle = root.sky
+            ctx.fillRect(0, 0, width, height)
+          }
 
           var tiles = root.game.tiles || []
           for (var y = 0; y < tiles.length; y++) {
@@ -312,7 +322,7 @@ Item {
             pixelText(ctx, "OSTRICH RIDERS", width / 2, 220, 42)
             pixelText(ctx, "STAY ABOVE YOUR OPPONENT", width / 2, 280, 16)
             pixelText(ctx, "ARROWS / AD  MOVE    SPACE / W  FLAP", width / 2, 430, 14)
-            pixelText(ctx, "SPACE TO RIDE     M MUTE     ESC CLOSE", width / 2, 470, 14)
+            pixelText(ctx, "SPACE TO RIDE   M MUTE   T TRANSPARENCY   ESC CLOSE", width / 2, 470, 14)
             pixelText(ctx, "BEST  " + root.bestScore, width / 2, 520, 16)
           } else if (root.game.phase === "paused") {
             ctx.fillStyle = Qt.rgba(root.night.r, root.night.g, root.night.b, 0.78)
@@ -420,6 +430,7 @@ Item {
           if (event.key === Qt.Key_Escape) root.dismiss()
           else if (event.key === Qt.Key_P) root.togglePause()
           else if (event.key === Qt.Key_M) root.toggleMute()
+          else if (event.key === Qt.Key_T) root.toggleTransparency()
           else if (event.key === Qt.Key_Left || event.key === Qt.Key_A || event.key === Qt.Key_H) root.leftHeld = true
           else if (event.key === Qt.Key_Right || event.key === Qt.Key_D || event.key === Qt.Key_L) root.rightHeld = true
           else if (event.key === Qt.Key_Space || event.key === Qt.Key_Up || event.key === Qt.Key_W) {

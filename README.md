@@ -47,6 +47,7 @@ o.bind("SUPER + CTRL + J", "Ostrich Riders", "omarchy-shell shell toggle io.gith
 - Space, `W`, or Up: flap
 - `P`: pause
 - `M`: mute
+- `T`: toggle transparency
 - Esc: close
 
 ## Remove

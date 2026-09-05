@@ -759,25 +759,27 @@ function mountFrame(entity) {
 }
 
 function parsePreferences(raw) {
-  var defaults = { version: 1, bestScore: 0, muted: false }
+  var defaults = { version: 1, bestScore: 0, muted: false, transparent: false }
   if (!raw) return defaults
   try {
     var value = JSON.parse(raw)
     return {
       version: 1,
       bestScore: Math.max(0, Math.floor(Number(value.bestScore) || 0)),
-      muted: value.muted === true
+      muted: value.muted === true,
+      transparent: value.transparent === true
     }
   } catch (error) {
     return defaults
   }
 }
 
-function serializePreferences(bestScore, muted) {
+function serializePreferences(bestScore, muted, transparent) {
   return JSON.stringify({
     version: 1,
     bestScore: Math.max(0, Math.floor(Number(bestScore) || 0)),
-    muted: muted === true
+    muted: muted === true,
+    transparent: transparent === true
   }, null, 2) + "\n"
 }
 
