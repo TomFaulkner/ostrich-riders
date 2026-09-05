@@ -187,10 +187,11 @@ test("a clash against the ceiling still resolves", () => {
 })
 
 test("preferences parse safely", () => {
-  assert.deepEqual(Game.parsePreferences("not json"), { version: 1, bestScore: 0, muted: false })
-  assert.deepEqual(Game.parsePreferences('{"bestScore":12.8,"muted":true}'), {
+  assert.deepEqual(Game.parsePreferences("not json"), { version: 1, bestScore: 0, muted: false, transparent: false })
+  assert.deepEqual(Game.parsePreferences('{"bestScore":12.8,"muted":true,"transparent":true}'), {
     version: 1,
     bestScore: 12,
-    muted: true
+    muted: true,
+    transparent: true
   })
 })
